@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Coustard:900&display=swap');
+.card-container{
+  margin: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 4fr));
+  grid-gap: 100px;
+  
+}
+.card{
+  width: 200px;
+  border-radius: 25px;
+  background: white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+}
+.card img {
+  height: 300px;
+  border-radius: 25px;
+}
+.card h3{
+  
+}
