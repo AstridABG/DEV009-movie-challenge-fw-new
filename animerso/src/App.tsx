@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Header from './header/headerComp';
 import MovieComponent from './Pages/Pagination';
-
+import logo from './images/logo.png';
 
 
 const App: React.FC = () => {
@@ -11,6 +11,8 @@ const App: React.FC = () => {
       <Header />
       <MovieComponent />
       
+        
+     
     </div>
   );
 };
