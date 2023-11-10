@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import './pagination.css'
+import ElementDetails from '../details/ElementInfo';
+import './pagination.css';
+
 const options = {
   method: 'GET',
   headers: {
@@ -14,7 +16,7 @@ interface MovieData {
   total_results: number;
 }
 
-const baseURL: string = `https://api.themoviedb.org/3/search/tv?query=animation&include_adult=false&language=en-US`;
+const baseURL: string = 'https://api.themoviedb.org/3/discover/tv?with_genres=16&language=en-US';
 
 const MovieComponent: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -61,6 +63,11 @@ const MovieComponent: React.FC = () => {
       console.log("Ya estás en la primera página.");
     }
   };
+  
+  function launchYear(date: string): string {
+    let year: string = date.split('-')[0];
+    return year;
+  }
 
   useEffect(() => {
     getAllMovies(baseURL, currentPage).then((data) => displayResults(data));
@@ -69,22 +76,29 @@ const MovieComponent: React.FC = () => {
   console.log(movieData);
 
   return (
-    <div>
+    <main>
       {movieData && (
-        <div>
+        <div className='content'>
           <ul className="card-container">
-            {movieData.results.map((movie, index) => (
-              <li className="card" key={index}>
-                <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.name} />
+            {movieData.results
+            .filter((movie) => movie.poster_path)
+            .map((movie, index) => (
+              <li className="card" key={index} title={movie.name}>
+                <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
+                <p className="cardName">{movie.name}</p>
+                <p className="launchDate">{`(${launchYear(movie.first_air_date)})`}</p>
               </li>
             ))}
           </ul>
-          <button onClick={previousPage}>Previous</button>
-          <a className='currentPageNumber'>Showing page {movieData.page} / {movieData.total_pages}</a>
-          <button onClick={nextPage}>Next</button>
+          <div className='pagination'>
+          <button onClick={previousPage} className='previousPage'>Back</button>
+          <a className='currentPageNumber'>Page:  {movieData.page} / {movieData.total_pages}</a>
+          <button onClick={nextPage} className='nextPage'>Next</button>
+          </div>
         </div>
+        
       )}
-    </div>
+    </main>
   );
 };
 

@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Lilita+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&family=Rowdies:wght@300&family=Seymour+One&display=swap');
 .headerComp {
     height: 100px;
     background-color: #16293C;
@@ -13,5 +13,67 @@
 }
 
 .logoHeader {
-    width: 120px;
+    width: 140px;
+}
+.Lema {
+    font-family: 'Rowdies', sans-serif;
+    font-size: 2em;
+    color: #fff;
+    text-shadow:
+      0 0 7px #fff,
+      0 0 10px #fff,
+      0 0 21px #fff,
+      0 0 42px #4C36ED,
+      0 0 82px #4C36ED,
+      0 0 92px #4C36ED,
+      0 0 102px #4C36ED,
+      0 0 121px #4C36ED;
+      animation: pulsate 0.11s ease-in-out infinite;
+      cursor: pointer;
+}
+
+@keyframes pulsate {
+    100% {
+      /* Larger blur radius */
+      text-shadow:
+        0 0 4px #fff,
+        0 0 11px #fff,
+        0 0 19px #fff,
+        0 0 40px #64247B,
+        0 0 80px #64247B,
+        0 0 90px #64247B,
+        0 0 100px #64247B,
+        0 0 150px #64247B;
+    }
+   0% {
+      /* A slightly smaller blur radius */
+      text-shadow:
+        0 0 4px #fff,
+        0 0 10px #fff,
+        0 0 18px #fff,
+        0 0 38px #64247B,
+        0 0 73px #64247B,
+        0 0 80px #64247B,
+        0 0 94px #64247B,
+        0 0 140px #64247B;
+    }
+  }
+.searchContainer {
+    position: relative;
+}
+.searchByName {
+    border-radius: 15px;
+    
+}
+.search-icon {
+    position: absolute;
+    right: 5px;
+    top:15%;
+    box-shadow: rgba(0, 0, 0.24, 0.24) 0px 0px 5px;
+    transition: transform 0.2s ease-in-out;
+    border-radius: 15px;
+}
+.search-icon:hover {
+    cursor: pointer;
+  transform: scale(1.3);
 }

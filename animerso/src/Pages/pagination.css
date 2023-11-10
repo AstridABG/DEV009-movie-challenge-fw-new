@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Coustard:900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Lilita+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&family=Rowdies:wght@300&family=Seymour+One&display=swap');
 #root {
   background-image: url('../images/Contact.png');
   height: 100%;
@@ -7,14 +8,14 @@
   margin: 50px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 4fr));
-  grid-gap: 100px;
+  grid-gap: 85px;
   
 }
 .card{
-  width: 133px;
-  height: 285px;
+  width: 170px;
+  height: 250px;
   border-radius: 25px;
-  background: white;
+  background: #16293C;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   transition: transform 0.2s ease-in-out;
 }
@@ -24,12 +25,70 @@
   transform: scale(1.1);
 }
 .card img {
-  height: 200px;
-  border-radius: 25px;
+  width: 300px;
+  height: 155px;
+  overflow: hidden;
+  border-radius: 25px 25px 0 0;
 }
-.card h3{
+img {
+  width: 100%; /* Ancho del 100% para que ocupe todo el contenedor */
+  height: 100%; /* Altura del 100% para que ocupe todo el contenedor */
+  object-fit: cover; /* Recorta la imagen para que se ajuste al contenedor manteniendo las proporciones */
+}
+.cardName, .launchDate {
   text-align: center;
-  margin:auto;
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  font-size: 1em;
+  margin:5px;
+  font-family:'Roboto';
+  font-size: 0.8em;
+  white-space: nowrap; /* Evita el salto de línea */
+  overflow: hidden; /* Oculta el contenido que desborda */
+  text-overflow: ellipsis;
+  color: white;
 }
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  margin-top: 20px;
+ 
+}
+
+.previousPage,
+.nextPage {
+  background-color: #773483;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 0 5px;
+  transition: background-color 0.3s ease;
+}
+
+.currentPageNumber {
+  margin: 0 10px;
+  font-weight: bold;
+}
+
+.previousPage:hover,
+.nextPage:hover {
+  background-color: #4C36ED;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #773483;
+}
+
+
+
+
+
+
