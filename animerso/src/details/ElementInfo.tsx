@@ -1,6 +1,6 @@
 // ElementDetails.tsx
 import React from 'react';
-
+import './ElementInfo.css'
 interface ElementDetailsProps {
   movie: {
     name: string;
@@ -13,7 +13,7 @@ interface ElementDetailsProps {
 
 const ElementDetails: React.FC<ElementDetailsProps> = ({ movie, onClose }) => {
   return (
-    <section className='elementDetail'>
+    <section className='elementDetail modal-overlay'>
       <div className='individualInfo'>
         <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.name} />
         <p className="cardName">{movie.name}</p>

@@ -21,6 +21,7 @@ const baseURL: string = 'https://api.themoviedb.org/3/discover/tv?with_genres=16
 const MovieComponent: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [movieData, setMovieData] = useState<MovieData | null>(null);
+  const [selectedMovie, setSelectedMovie] = useState<any | null>(null);
 
   const getAllMovies = async (url: string, page: number): Promise<MovieData | null> => {
     try {
@@ -40,6 +41,13 @@ const MovieComponent: React.FC = () => {
     } else {
       console.log("No se pudieron obtener los datos para la página solicitada.");
     }
+  };
+
+  const openDetails = (movie: any) => {
+    setSelectedMovie(movie);
+  };
+  const closeDetails = () => {
+    setSelectedMovie(null);
   };
 
   const nextPage = async () => {
@@ -83,13 +91,16 @@ const MovieComponent: React.FC = () => {
             {movieData.results
             .filter((movie) => movie.poster_path)
             .map((movie, index) => (
-              <li className="card" key={index} title={movie.name}>
+              <li className="card" key={index} title={movie.name} onClick={() => openDetails(movie)}>
                 <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
                 <p className="cardName">{movie.name}</p>
                 <p className="launchDate">{`(${launchYear(movie.first_air_date)})`}</p>
               </li>
             ))}
           </ul>
+          {selectedMovie && (
+            <ElementDetails movie={selectedMovie} onClose={closeDetails} />
+          )}
           <div className='pagination'>
           <button onClick={previousPage} className='previousPage'>Back</button>
           <a className='currentPageNumber'>Page:  {movieData.page} / {movieData.total_pages}</a>

@@ -10,9 +10,6 @@ const App: React.FC = () => {
     <div className='App'>
       <Header />
       <MovieComponent />
-      
-        
-     
     </div>
   );
 };
